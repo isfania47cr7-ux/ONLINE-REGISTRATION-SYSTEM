@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <div class="panel-header">
+      <h2>{{ course.title }}</h2>
+      <a class="button" href="/courses">Back to Courses</a>
+    </div>
+    <p class="course-meta">Instructor: {{ course.instructor_name }} | Dates: {{ course.start_date }} to {{ course.end_date }} | Capacity: {{ course.capacity }}</p>
+    <p>{{ course.description }}</p>
+
+    <div class="report-grid">
+      <div class="card">
+        <h3>Course Progress</h3>
+        <p>Enrolled Students: {{ course_stats.enrolled_students or 0 }}</p>
+        <p>Completion Rate: {{ course_stats.completion_rate or 0 }}%</p>
+      </div>
+    </div>
+
+    <div class="panel-subsection">
+      <h3>Modules</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for module in modules %}
+            <tr>
+              <td>{{ module.module_order }}</td>
+              <td>{{ module.module_title }}</td>
+              <td>{{ module.description }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel-subsection">
+      <h3>Enrolled Students</h3>
+      {% if enrolled %}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in enrolled %}
+              <tr>
+                <td>{{ student.student_name }}</td>
+                <td>{{ student.status }}</td>
+                <td><a href="/student/{{ student.student_id }}">View</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No students enrolled yet.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

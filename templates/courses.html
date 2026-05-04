@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <div class="panel-header">
+      <h2>Courses</h2>
+      <a class="button" href="/courses/new">Create Course</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Instructor</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Capacity</th>
+          <th>Enrolled</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+          <tr>
+            <td>{{ course.title }}</td>
+            <td>{{ course.instructor_name }}</td>
+            <td>{{ course.start_date }}</td>
+            <td>{{ course.end_date }}</td>
+            <td>{{ course.capacity }}</td>
+            <td>{{ course.enrolled_students }}</td>
+            <td><a href="/course/{{ course.course_id }}">View</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}

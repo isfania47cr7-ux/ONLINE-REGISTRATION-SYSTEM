@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <div class="panel-header">
+      <h2>Students</h2>
+      <a class="button" href="/students/new">Add Student</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Enrollment Date</th>
+          <th>Course End Date</th>
+          <th>Enrolled Courses</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+          <tr>
+            <td>{{ student.first_name }} {{ student.last_name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.enrollment_date }}</td>
+            <td>{{ student.next_end_date or 'N/A' }}</td>
+            <td>{{ student.course_count }}</td>
+            <td><a href="/student/{{ student.student_id }}">View</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}

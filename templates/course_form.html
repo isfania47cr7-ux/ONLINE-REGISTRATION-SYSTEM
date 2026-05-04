@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <h2>Create New Course</h2>
+    <form method="post">
+      <label for="title">Course Title</label>
+      <input id="title" name="title" type="text" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <label for="instructor_id">Instructor</label>
+      <select id="instructor_id" name="instructor_id" required>
+        <option value="">Choose an instructor</option>
+        {% for instructor in instructors %}
+          <option value="{{ instructor.instructor_id }}">{{ instructor.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="start_date">Start Date</label>
+      <input id="start_date" name="start_date" type="date" required>
+
+      <label for="end_date">End Date</label>
+      <input id="end_date" name="end_date" type="date" required>
+
+      <label for="capacity">Capacity</label>
+      <input id="capacity" name="capacity" type="number" min="1" value="30" required>
+
+      <h3>Modules</h3>
+      {% for module_index in range(1, 6) %}
+        <label for="module_{{ module_index }}_title">Module {{ module_index }} Title</label>
+        <input id="module_{{ module_index }}_title" name="module_{{ module_index }}_title" type="text">
+        <label for="module_{{ module_index }}_description">Module {{ module_index }} Description</label>
+        <input id="module_{{ module_index }}_description" name="module_{{ module_index }}_description" type="text">
+      {% endfor %}
+
+      <button type="submit">Create Course</button>
+    </form>
+  </section>
+{% endblock %}

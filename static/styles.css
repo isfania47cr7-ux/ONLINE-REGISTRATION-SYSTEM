@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+header {
+  background: #0f4c81;
+  color: #fff;
+  padding: 24px 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.container {
+  width: min(1100px, 94%);
+  margin: 0 auto;
+}
+
+nav {
+  margin-top: 12px;
+}
+
+nav a {
+  color: #e2e8f0;
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+main {
+  padding: 24px 0;
+}
+
+.panel {
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.summary-grid,
+.report-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.card {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.card.wide {
+  grid-column: span 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+table th {
+  background: #f1f5f9;
+}
+
+form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select,
+button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+button {
+  background: #0f4c81;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+button:hover {
+  background: #0c3b63;
+}
+
+.button {
+  display: inline-block;
+  background: #0f4c81;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background: #0c3b63;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.course-meta {
+  margin: 10px 0 0;
+  color: #475569;
+}
+
+.inline-form {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+  align-items: center;
+}
+
+.inline-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+footer {
+  padding: 16px 0;
+  text-align: center;
+  color: #475569;
+}
+
+.status {
+  font-size: 0.95rem;
+  color: #0f4c81;
+  margin-left: 10px;
+}

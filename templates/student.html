@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <h2>{{ student.first_name }} {{ student.last_name }}: Progress</h2>
+    {% if progress_rows %}
+      {% for enrollment in progress_rows %}
+        <div class="card">
+          <h3>{{ enrollment.course_title }} <span class="status">{{ enrollment.status }}</span></h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Completed</th>
+                <th>Score</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in enrollment.progress %}
+                <tr>
+                  <td>{{ row.module_title }}</td>
+                  <td>{{ 'Yes' if row.completed else 'No' }}</td>
+                  <td>{{ row.score or '—' }}</td>
+                  <td>
+                    <form method="post" action="/progress/update" class="inline-form">
+                      <input type="hidden" name="enrollment_id" value="{{ enrollment.enrollment_id }}">
+                      <input type="hidden" name="module_id" value="{{ row.module_id }}">
+                      <label class="inline-checkbox">
+                        <input type="checkbox" name="completed" {% if row.completed %}checked{% endif %}>
+                        Completed
+                      </label>
+                      <input type="number" name="score" value="{{ row.score or '' }}" min="0" max="100" step="0.1" placeholder="Score">
+                      <button type="submit">Save</button>
+                    </form>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>This student has no current course enrollments yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}

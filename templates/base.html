@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Course Registration</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Online Course Registration System</h1>
+        <nav>
+          <a href="/">Dashboard</a>
+          <a href="/students">Students</a>
+          <a href="/courses">Courses</a>
+          <a href="/enroll">Enroll</a>
+          <a href="/report">Reports</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="container">Built with SQL and DBMS principles for course enrollment management.</div>
+    </footer>
+  </body>
+</html>

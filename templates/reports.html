@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <h2>Performance Reports</h2>
+    <div class="report-grid">
+      <div class="card wide">
+        <h3>Course Summary</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Enrolled</th>
+              <th>Completion %</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for report in course_reports %}
+              <tr>
+                <td>{{ report.title }}</td>
+                <td>{{ report.enrolled_students }}</td>
+                <td>{{ report.completion_percentage or 0 }}%</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card wide">
+        <h3>Student Performance</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Courses</th>
+              <th>Avg Score</th>
+              <th>Completion Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for report in student_reports %}
+              <tr>
+                <td>{{ report.student_name }}</td>
+                <td>{{ report.courses_enrolled }}</td>
+                <td>{{ report.average_score or 'N/A' }}</td>
+                <td>{{ report.completion_rate or 0 }}%</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}

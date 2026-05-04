@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section class="panel">
+    <h2>Dashboard</h2>
+    <div class="summary-grid">
+      <div class="card">
+        <h3>Students</h3>
+        <p>{{ students|length }}</p>
+      </div>
+      <div class="card">
+        <h3>Courses</h3>
+        <p>{{ courses|length }}</p>
+      </div>
+      <div class="card">
+        <h3>Enrollments</h3>
+        <p>{{ enrollments|length }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Active Enrollments</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Course</th>
+          <th>Status</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for enrollment in enrollments %}
+          <tr>
+            <td>{{ enrollment.student_name }}</td>
+            <td>{{ enrollment.course_title }}</td>
+            <td>{{ enrollment.status }}</td>
+            <td><a href="/student/{{ enrollment.student_id }}">View</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}
